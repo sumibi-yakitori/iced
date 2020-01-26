@@ -161,6 +161,9 @@ pub trait Application: Sized {
         window::Mode::Windowed
     }
 
+    /// APPLICATION EXIT EVENT
+    fn on_exit(&mut self);
+
     /// Runs the [`Application`].
     ///
     /// This method will take control of the current thread and __will NOT
@@ -221,9 +224,11 @@ where
     fn subscription(&self) -> Subscription<Self::Message> {
         self.0.subscription()
     }
-
     fn view(&mut self) -> Element<'_, Self::Message> {
         self.0.view()
+    }
+    fn on_exit(&mut self) {
+        self.0.on_exit()
     }
 }
 
@@ -250,5 +255,8 @@ where
 
     fn view(&mut self) -> Element<'_, Self::Message> {
         self.0.view()
+    }
+    fn on_exit(&mut self) {
+        self.0.on_exit()
     }
 }

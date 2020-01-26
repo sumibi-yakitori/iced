@@ -127,6 +127,9 @@ pub trait Sandbox {
     {
         <Self as Application>::run(settings)
     }
+
+    /// APPLICATION EXIT EVENT
+    fn on_exit(&mut self);
 }
 
 impl<T> Application for T
@@ -156,5 +159,8 @@ where
 
     fn view(&mut self) -> Element<'_, T::Message> {
         T::view(self)
+    }
+    fn on_exit(&mut self) {
+        T::on_exit(self)
     }
 }

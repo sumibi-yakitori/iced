@@ -24,6 +24,7 @@ pub mod button;
 pub mod checkbox;
 pub mod column;
 pub mod container;
+pub mod hover_area;
 pub mod image;
 pub mod progress_bar;
 pub mod radio;
@@ -43,6 +44,8 @@ pub use checkbox::Checkbox;
 pub use column::Column;
 #[doc(no_inline)]
 pub use container::Container;
+#[doc(no_inline)]
+pub use hover_area::HoverArea;
 #[doc(no_inline)]
 pub use image::Image;
 #[doc(no_inline)]

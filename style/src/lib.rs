@@ -5,6 +5,7 @@
 pub mod button;
 pub mod checkbox;
 pub mod container;
+pub mod hover_area;
 pub mod progress_bar;
 pub mod radio;
 pub mod scrollable;

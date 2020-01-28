@@ -89,6 +89,9 @@ pub trait Application: Sized {
         Mode::Windowed
     }
 
+    /// APPLICATION EXIT EVENT
+    fn on_exit(&mut self);
+
     /// Runs the [`Application`].
     ///
     /// This method will take control of the current thread and __will NOT
@@ -296,6 +299,8 @@ pub trait Application: Sized {
 
                 window.request_redraw();
             }
+            // event::Event::LoopDestroyed => {
+            // }
             event::Event::UserEvent(message) => {
                 external_messages.push(message);
             }
@@ -346,6 +351,7 @@ pub trait Application: Sized {
                     resized = true;
                 }
                 WindowEvent::CloseRequested => {
+                    application.on_exit();
                     *control_flow = ControlFlow::Exit;
                 }
                 WindowEvent::CursorMoved { position, .. } => {

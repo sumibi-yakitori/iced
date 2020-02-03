@@ -161,6 +161,14 @@ pub trait Application: Sized {
             window_builder.build(&event_loop).expect("Open window")
         };
 
+        if mode == Mode::Windowed {
+            if let Some((x, y)) = settings.window.position {
+                window.set_outer_position(winit::dpi::LogicalPosition {
+                    x: f64::from(x),
+                    y: f64::from(y),
+                })
+            }
+        }
         let dpi = window.hidpi_factor();
         let mut size = window.inner_size();
         let mut resized = false;

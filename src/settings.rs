@@ -23,6 +23,7 @@ impl From<Settings> for iced_winit::Settings {
     fn from(settings: Settings) -> iced_winit::Settings {
         iced_winit::Settings {
             window: iced_winit::settings::Window {
+                position: settings.window.position,
                 size: settings.window.size,
                 resizable: settings.window.resizable,
                 decorations: settings.window.decorations,
